@@ -1,0 +1,321 @@
+body {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background: #ffffff;
+    padding: 50px 0;
+}
+
+.cake-stack {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.plate {
+    width: 350px;
+    height: 20px;
+    background: rgb(187, 222, 244);
+    border-radius: 5px;
+    position: relative;
+    z-index: 0;
+}
+
+.lrgcake {
+    width: 300px;
+    height: 50px;
+    background: rgb(246, 222, 193);
+    border-radius: 5px;
+    animation: spongyCakeBounce 2s ease-out forwards;
+    position: relative;
+    z-index: 1;
+    transform-origin: bottom center;
+}
+
+.medcake {
+    width: 200px;
+    height: 50px;
+    background: rgb(246, 222, 193);
+    border-radius: 5px;
+    position: relative;
+    z-index: 1;
+    animation: spongyCakeBounce 2s ease-out 3.5s forwards;
+    opacity: 0;
+    transform: translateY(-600px);
+    transform-origin: bottom center;
+}
+
+.smcake {
+    width: 100px;
+    height: 50px;
+    background: rgb(246, 222, 193);
+    border-radius: 5px;
+    position: relative;
+    z-index: 1;
+    animation: spongyCakeBounce 2s ease-out 5.5s forwards;
+    opacity: 0;
+    transform: translateY(-600px);
+    transform-origin: bottom center;
+}
+
+@keyframes spongyCakeBounce {
+    0% {
+        transform: translateY(-600px) scaleY(1) scaleX(1);
+        opacity: 0;
+        border-radius: 5px;
+    }
+    45% {
+        transform: translateY(10px) scaleY(1) scaleX(1);
+        opacity: 1;
+        border-radius: 5px;
+    }
+    55% {
+        transform: translateY(10px) scaleY(0.65) scaleX(1.25);
+        border-radius: 5px 5px 60% 60%;
+    }
+    70% {
+        transform: translateY(-35px) scaleY(1.08) scaleX(0.96);
+        border-radius: 5px 5px 40% 40%;
+    }
+    82% {
+        transform: translateY(5px) scaleY(0.8) scaleX(1.12);
+        border-radius: 5px 5px 45% 45%;
+    }
+    90% {
+        transform: translateY(-12px) scaleY(1.04) scaleX(0.98);
+        border-radius: 5px 5px 20% 20%;
+    }
+    96% {
+        transform: translateY(2px) scaleY(0.93) scaleX(1.04);
+        border-radius: 5px 5px 25% 25%;
+    }
+    100% {
+        transform: translateY(0) scaleY(1) scaleX(1);
+        opacity: 1;
+        border-radius: 5px;
+    }
+}
+
+.frost {
+    width: 300px;
+    height: 10px;
+    background: rgb(247, 151, 209);
+    border-radius: 0px;
+    position: relative;
+    overflow: visible;
+    animation: frostingDrop 1.2s ease-out 2s forwards;
+    opacity: 0;
+    transform: translateY(-200px);
+    z-index: 2;
+}
+
+.frost .drip {
+    animation: dripAppear 1.8s ease-out 3.2s forwards;
+    opacity: 0;
+    height: 0;
+}
+
+@keyframes frostingDrop {
+    0% {
+        opacity: 0;
+        transform: translateY(-200px);
+    }
+    60% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+    75% {
+        transform: translateY(3px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes dripAppear {
+    0% {
+        opacity: 0;
+        height: 0;
+        top: 10px;
+    }
+    20% {
+        opacity: 1;
+        height: 5px;
+    }
+    50% {
+        height: calc(var(--drip-height) * 1.15);
+    }
+    70% {
+        height: calc(var(--drip-height) * 0.95);
+    }
+    100% {
+        opacity: 1;
+        height: var(--drip-height);
+        top: 10px;
+    }
+}
+
+.medfrost {
+    width: 200px;
+    height: 10px;
+    background: rgb(247, 151, 209);
+    border-radius: 0px;
+    position: relative;
+    overflow: visible;
+    animation: frostingDrop 1.2s ease-out 4s forwards;
+    opacity: 0;
+    transform: translateY(-200px);
+    z-index: 2;
+}
+
+.medfrost .drip {
+    animation: dripAppear 1.8s ease-out 5.2s forwards;
+    opacity: 0;
+    height: 0;
+}
+
+.smfrost {
+    width: 100px;
+    height: 10px;
+    background: rgb(247, 151, 209);
+    border-radius: 0px;
+    position: relative;
+    overflow: visible;
+    animation: frostingDrop 1.2s ease-out 6s forwards;
+    opacity: 0;
+    transform: translateY(-200px);
+    z-index: 2;
+}
+
+.smfrost .drip {
+    animation: dripAppear 1.8s ease-out 7.2s forwards;
+    opacity: 0;
+    height: 0;
+}
+
+.drip {
+    position: absolute;
+    top: 10px;
+    width: 40px;
+    background: rgb(247, 151, 209);
+    border-radius: 0 0 20px 20px;
+    transform-origin: top center;
+}
+
+.candle {
+    width: 15px;
+    height: 60px;
+    background: linear-gradient(to right, #ff6b9d, #ff8fb3);
+    border-radius: 5px 5px 0 0;
+    position: absolute;
+    top: -60px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 3;
+    opacity: 0;
+    animation: candleDropIn 1.5s ease-out 7.5s forwards;
+}
+
+@keyframes candleDropIn {
+    0% {
+        opacity: 0;
+        top: -700px;  /* Starts way above screen */
+    }
+    70% {
+        opacity: 1;
+        top: -55px;  /* Drops to position */
+    }
+    85% {
+        top: -65px;  /* Bounces slightly down */
+    }
+    100% {
+        opacity: 1;
+        top: -60px;  /* Final position */
+    }
+}
+
+.wick {
+    position: absolute;
+    top: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 2px;
+    height: 10px;
+    background: #333;
+}
+
+.flame {
+    position: absolute;
+    top: -35px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 20px;
+    height: 30px;
+    background: radial-gradient(circle, #ffeb3b 0%, #ff9800 50%, #ff5722 100%);
+    border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
+    box-shadow: 0 0 20px #ffeb3b, 0 0 40px #ff9800;
+    opacity: 0;
+    animation: flameAppear 0.5s ease-out 8.3s forwards, flicker 0.3s ease-in-out 8.8s infinite alternate;
+}
+
+@keyframes flameAppear {
+    0% {
+        opacity: 0;
+        transform: translateX(-50%) scale(0.5);
+    }
+    100% {
+        opacity: 1;
+        transform: translateX(-50%) scale(1);
+    }
+}
+
+.flame::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 10px;
+    height: 15px;
+    background: #ffeb3b;
+    border-radius: 50%;
+    filter: blur(2px);
+}
+
+@keyframes flicker {
+    0%, 100% { 
+        transform: translateX(-50%) scaleY(1);
+        filter: brightness(1);
+    }
+    50% { 
+        transform: translateX(-50%) scaleY(0.95);
+        filter: brightness(1.2);
+    }
+}
+
+.birthday-text {
+    font-family: 'Playpen Sans', cursive;
+    font-size: 3rem;
+    font-weight: 700;
+    color: #3f3e3e;
+    text-align: center;
+    margin-top: 20px;
+    opacity: 0;
+    transform: translateY(20px);
+    animation: textAppear 1s ease-out 9.5s forwards;  /* Appears after everything */
+}
+
+@keyframes textAppear {
+    0% {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
